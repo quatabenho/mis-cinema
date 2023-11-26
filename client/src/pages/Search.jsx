@@ -239,13 +239,13 @@ const Search = () => {
 			}
 		})
 		await Promise.all(releasePromises)
-		toast.success(`Release ${successCounter} checked showtimes successful!`, {
+		toast.success(`Phát hành ${successCounter} thành công!`, {
 			position: 'top-center',
 			autoClose: 2000,
 			pauseOnHover: false
 		})
 		errorCounter > 0 &&
-			toast.error(`Error releasing ${errorCounter} checked showtime`, {
+			toast.error(`Lỗi phát hành ${errorCounter} lịch`, {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -256,7 +256,7 @@ const Search = () => {
 	}
 
 	const handleUnreleasedCheckedShowtimes = () => {
-		const confirmed = window.confirm(`Do you want to unreleased ${checkedShowtimes.length} checked showtimes?`)
+		const confirmed = window.confirm(`Bạn có muốn hủy ${checkedShowtimes.length} lịch đã đánh dấu?`)
 		if (confirmed) {
 			onUnreleasedCheckedShowtimes()
 		}
@@ -287,13 +287,13 @@ const Search = () => {
 			}
 		})
 		await Promise.all(releasePromises)
-		toast.success(`Unreleased ${successCounter} checked showtimes successful!`, {
+		toast.success(`Hủy ${successCounter} lịch đã đánh dấu thành công!`, {
 			position: 'top-center',
 			autoClose: 2000,
 			pauseOnHover: false
 		})
 		errorCounter > 0 &&
-			toast.error(`Error unreleasing ${errorCounter} checked showtime`, {
+			toast.error(`Lỗi hủy ${errorCounter} lịch`, {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -311,15 +311,15 @@ const Search = () => {
 	const navigate = useNavigate()
 
 	return (
-		<div className="flex min-h-screen flex-col gap-4 bg-gradient-to-br from-indigo-900 to-blue-500 pb-8 text-gray-900 sm:gap-8">
+		<div className="flex min-h-screen flex-col gap-4 bg-orange-0 pb-8 text-gray-900 sm:gap-8">
 			<Navbar />
-			<div className="mx-4 flex h-fit flex-col gap-2 rounded-lg bg-gradient-to-br from-indigo-200 to-blue-100 p-4 drop-shadow-xl sm:mx-8 sm:p-6">
-				<h2 className="text-3xl font-bold text-gray-900">Search Showtimes</h2>
-				<div className="flex flex-col gap-2 rounded-md bg-gradient-to-br from-indigo-100 to-white p-4 transition-all duration-500 ease-in-out">
+			<div className="mx-4 flex h-fit flex-col gap-2 rounded-lg bg-orange-50 p-4 drop-shadow-xl sm:mx-8 sm:p-6">
+				<h2 className="text-3xl font-bold text-gray-900 pb-5">Tìm lịch chiếu phim</h2>
+				<div className="flex flex-col gap-2 rounded-md bg-orange-100 p-4 transition-all duration-500 ease-in-out">
 					<div className="flex items-center justify-between" onClick={() => setIsOpenFilter((prev) => !prev)}>
-						<div className="flex items-center gap-2 text-2xl font-bold text-gray-900">
+						<div className="flex items-center gap-2 text-2xl font-bold text-gray-900 pb-3">
 							<FunnelIcon className="h-6 w-6" />
-							Filter
+							Bộ lọc
 						</div>
 						{!isOpenFilter && (
 							<ChevronDownIcon className="h-6 w-6 transition-all hover:scale-125 hover:cursor-pointer" />
@@ -330,8 +330,8 @@ const Search = () => {
 					</div>
 					{isOpenFilter && (
 						<div className="">
-							<div className="flex flex-col">
-								<h4 className="pt-1 text-lg font-bold text-gray-800">Cinema :</h4>
+							<div className="flex flex-col pb-3">
+								<h4 className="pt-1 text-lg font-bold text-gray-800">Cụm rạp</h4>
 								<Select
 									value={filterCinema}
 									options={Array.from(
@@ -351,8 +351,8 @@ const Search = () => {
 									primaryColor="indigo"
 								/>
 							</div>
-							<div className="flex flex-col">
-								<h4 className="pt-1 text-lg font-bold text-gray-800">Theater :</h4>
+							<div className="flex flex-col pb-3">
+								<h4 className="pt-1 text-lg font-bold text-gray-800">Phòng chiếu phim</h4>
 								<Select
 									value={filterTheater}
 									options={Array.from(new Set(showtimes.map((showtime) => showtime.theater.number)))
@@ -371,8 +371,8 @@ const Search = () => {
 									primaryColor="indigo"
 								/>
 							</div>
-							<div className="flex flex-col">
-								<h4 className="pt-1 text-lg font-bold text-gray-800">Movie :</h4>
+							<div className="flex flex-col pb-3">
+								<h4 className="pt-1 text-lg font-bold text-gray-800">Phim</h4>
 								<Select
 									value={filterMovie}
 									options={Array.from(new Set(showtimes.map((showtime) => showtime.movie._id))).map(
@@ -391,8 +391,8 @@ const Search = () => {
 									primaryColor="indigo"
 								/>
 							</div>
-							<div className="flex flex-col">
-								<h4 className="pt-1 text-lg font-bold text-gray-800">Date :</h4>
+							<div className="flex flex-col pb-3">
+								<h4 className="pt-1 text-lg font-bold text-gray-800">Ngày</h4>
 								<Select
 									value={filterDate}
 									options={Array.from(
@@ -418,8 +418,8 @@ const Search = () => {
 									isSearchable={true}
 									primaryColor="indigo"
 								/>
-								<div className="my-2 flex flex-col items-start gap-x-2 gap-y-1 sm:flex-row sm:items-center">
-									<label className="text-md font-semibold text-gray-800">From</label>
+								<div className="my-2 flex flex-col items-start gap-x-2 gap-y-1 sm:flex-row sm:items-center pb-3">
+									<label className="text-md font-semibold text-gray-800">Từ</label>
 									<Select
 										value={filterDateFrom}
 										options={Array.from(
@@ -448,7 +448,7 @@ const Search = () => {
 										isSearchable={true}
 										primaryColor="indigo"
 									/>
-									<label className="text-md font-semibold text-gray-800">To</label>
+									<label className="text-md font-semibold text-gray-800 pl-4">Đến</label>
 									<Select
 										value={filterDateTo}
 										options={Array.from(
@@ -478,9 +478,9 @@ const Search = () => {
 										primaryColor="indigo"
 									/>
 								</div>
-								<div className="flex flex-col items-start gap-x-8 gap-y-2 sm:flex-row sm:items-center">
+								<div className="flex flex-col items-start gap-x-8 gap-y-2 sm:flex-row sm:items-center pb-3">
 									<label className="text-md flex items-center justify-between gap-2 font-semibold text-gray-800">
-										Past Date
+										Đã chiếu
 										<input
 											type="checkbox"
 											className="h-6 w-6"
@@ -494,7 +494,7 @@ const Search = () => {
 										/>
 									</label>
 									<label className="text-md flex items-center justify-between gap-2 font-semibold text-gray-800">
-										Today
+										Hôm nay
 										<input
 											type="checkbox"
 											className="h-6 w-6"
@@ -508,7 +508,7 @@ const Search = () => {
 										/>
 									</label>
 									<label className="text-md flex items-center justify-between gap-2 font-semibold text-gray-800">
-										Future Date
+										Sắp chiếu
 										<input
 											type="checkbox"
 											className="h-6 w-6"
@@ -524,7 +524,7 @@ const Search = () => {
 								</div>
 							</div>
 							<div className="flex flex-col">
-								<h4 className="pt-1 text-lg font-bold text-gray-800">Time :</h4>
+								<h4 className="pt-1 text-lg font-bold text-gray-800">Thời gian</h4>
 								<Select
 									value={filterTime}
 									options={Array.from(
@@ -551,8 +551,8 @@ const Search = () => {
 									isSearchable={true}
 									primaryColor="indigo"
 								/>
-								<div className="my-2 flex flex-col items-start gap-x-2 gap-y-1 sm:flex-row sm:items-center">
-									<label className="text-md font-semibold text-gray-800">From</label>
+								<div className="my-2 flex flex-col items-start gap-x-2 gap-y-1 sm:flex-row sm:items-center pb-3">
+									<label className="text-md font-semibold text-gray-800">Từ</label>
 									<Select
 										value={filterTimeFrom}
 										options={Array.from(
@@ -581,7 +581,7 @@ const Search = () => {
 										isSearchable={true}
 										primaryColor="indigo"
 									/>
-									<label className="text-md font-semibold text-gray-800">To</label>
+									<label className="text-md font-semibold text-gray-800 pl-4">Đến</label>
 									<Select
 										value={filterTimeTo}
 										options={Array.from(
@@ -613,10 +613,10 @@ const Search = () => {
 								</div>
 							</div>
 							<div className="flex flex-col">
-								<h4 className="pt-1 text-lg font-bold text-gray-800">Release :</h4>
+								<h4 className="pt-1 text-lg font-bold text-gray-800">Phát hành</h4>
 								<div className="mt-1 flex flex-col items-start gap-x-8 gap-y-2 sm:flex-row sm:items-center">
 									<label className="text-md flex items-center justify-between gap-2 font-semibold text-gray-800">
-										True
+										Đã phát hành
 										<input
 											type="checkbox"
 											className="h-6 w-6"
@@ -629,7 +629,7 @@ const Search = () => {
 										/>
 									</label>
 									<label className="text-md flex items-center justify-between gap-2 font-semibold text-gray-800">
-										False
+										Chưa phát hành
 										<input
 											type="checkbox"
 											className="h-6 w-6"
@@ -645,8 +645,8 @@ const Search = () => {
 							</div>
 						</div>
 					)}
-				</div>
-				<div className="flex items-end">
+				</div><br />
+				<div className="flex items-end pb-3">
 					<ArrowDownIcon className="h-8 min-h-[32px] w-8 min-w-[32px] px-1" />
 					<div className="flex flex-wrap items-center gap-2 px-1">
 						<button
@@ -655,11 +655,11 @@ const Search = () => {
 							disabled={checkedShowtimes.length === 0 || isReleasingCheckedShowtimes}
 						>
 							{isReleasingCheckedShowtimes ? (
-								`${releasedCheckedShowtimes} / ${checkedShowtimes.length} showtimes released`
+								`${releasedCheckedShowtimes} / ${checkedShowtimes.length} lịch đã phát hành`
 							) : (
 								<>
 									<EyeIcon className="h-5 w-5" />
-									{`Release ${checkedShowtimes.length} checked showtimes`}
+									{`Phát hành ${checkedShowtimes.length} lịch đã đánh dấu`}
 								</>
 							)}
 						</button>
@@ -669,16 +669,16 @@ const Search = () => {
 							disabled={checkedShowtimes.length === 0 || isUnreleasingCheckedShowtimes}
 						>
 							{isUnreleasingCheckedShowtimes ? (
-								`${unreleasedCheckedShowtimes} / ${checkedShowtimes.length} showtimes unreleased`
+								`${unreleasedCheckedShowtimes} / ${checkedShowtimes.length} lịch đã phát hành`
 							) : (
 								<>
 									<EyeSlashIcon className="h-5 w-5" />
-									{`Unreleased ${checkedShowtimes.length} checked showtimes`}
+									{`Hủy ${checkedShowtimes.length} lịch đã đánh dấu`}
 								</>
 							)}
 						</button>
 						<button
-							className="flex w-fit items-center justify-center gap-1 rounded bg-gradient-to-r from-red-700 to-rose-600 py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:from-red-600 hover:to-rose-500 disabled:from-slate-500 disabled:to-slate-400 md:min-w-fit"
+							className="flex w-fit items-center justify-center gap-1 rounded bg-red-400 py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:bg-red-500 disabled:from-slate-500 disabled:to-slate-400 md:min-w-fit"
 							onClick={() => handleDeleteCheckedShowtimes()}
 							disabled={checkedShowtimes.length === 0 || isDeletingCheckedShowtimes}
 						>
@@ -687,7 +687,7 @@ const Search = () => {
 							) : (
 								<>
 									<TrashIcon className="h-5 w-5" />
-									{`Delete ${checkedShowtimes.length} checked showtimes`}
+									{`Xóa ${checkedShowtimes.length} lịch đã đánh dấu`}
 								</>
 							)}
 						</button>
@@ -695,8 +695,7 @@ const Search = () => {
 
 					{isFetchingShowtimesDone && (
 						<div className="ml-auto flex items-center gap-1 px-1 text-sm font-medium">
-							<InformationCircleIcon className="h-5 w-5" /> Showing {filteredShowtimes.length} filtered
-							showtimes
+							<InformationCircleIcon className="h-5 w-5" /> Hiển thị {filteredShowtimes.length} kết quả
 						</div>
 					)}
 				</div>
@@ -705,7 +704,7 @@ const Search = () => {
 					className={`mb-4 grid max-h-screen overflow-auto rounded-md bg-gradient-to-br from-indigo-100 to-white`}
 					style={{ gridTemplateColumns: '34px repeat(7, minmax(max-content, 1fr)) 104px' }}
 				>
-					<p className="sticky top-0 flex items-center justify-center rounded-tl-md bg-gradient-to-br from-gray-800 to-gray-700 text-center text-xl font-semibold text-white">
+					<p className="sticky top-0 flex items-center justify-center rounded-tl-md bg-red-400 text-center text-xl font-semibold text-white">
 						<input
 							type="checkbox"
 							className="h-6 w-6"
@@ -726,99 +725,99 @@ const Search = () => {
 						/>
 					</p>
 					<button
-						className="sticky top-0 flex justify-center bg-gradient-to-br from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
+						className="sticky top-0 flex justify-center bg-red-500 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
 						onClick={() => {
 							let prevValue = sortCinema
 							resetSort()
 							setSortCinema(prevValue === 0 ? 1 : prevValue === 1 ? -1 : 0)
 						}}
 					>
-						<p className="ml-auto">Cinema</p>
+						<p className="ml-auto">Cụm rạp</p>
 						{sortCinema === 0 && <ChevronUpDownIcon className="ml-auto w-6 h-6" />}
 						{sortCinema === 1 && <ChevronUpIcon className="ml-auto w-6 h-6" />}
 						{sortCinema === -1 && <ChevronDownIcon className="ml-auto w-6 h-6" />}
 					</button>
 					<button
-						className="sticky top-0 flex justify-center bg-gradient-to-br from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
+						className="sticky top-0 flex justify-center bg-red-400 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
 						onClick={() => {
 							let prevValue = sortTheater
 							resetSort()
 							setSortTheater(prevValue === 0 ? 1 : prevValue === 1 ? -1 : 0)
 						}}
 					>
-						<p className="ml-auto">Theater</p>
+						<p className="ml-auto">Phòng chiếu</p>
 						{sortTheater === 0 && <ChevronUpDownIcon className="ml-auto w-6 h-6" />}
 						{sortTheater === 1 && <ChevronUpIcon className="ml-auto w-6 h-6" />}
 						{sortTheater === -1 && <ChevronDownIcon className="ml-auto w-6 h-6" />}
 					</button>
 					<button
-						className="sticky top-0 flex justify-center bg-gradient-to-br from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
+						className="sticky top-0 flex justify-center bg-red-500 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
 						onClick={() => {
 							let prevValue = sortMovie
 							resetSort()
 							setSortMovie(prevValue === 0 ? 1 : prevValue === 1 ? -1 : 0)
 						}}
 					>
-						<p className="ml-auto">Movie</p>
+						<p className="ml-auto">Phim</p>
 						{sortMovie === 0 && <ChevronUpDownIcon className="ml-auto w-6 h-6" />}
 						{sortMovie === 1 && <ChevronUpIcon className="ml-auto w-6 h-6" />}
 						{sortMovie === -1 && <ChevronDownIcon className="ml-auto w-6 h-6" />}
 					</button>
 					<button
-						className="sticky top-0 flex justify-center bg-gradient-to-br from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
+						className="sticky top-0 flex justify-center bg-red-400 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
 						onClick={() => {
 							let prevValue = sortDate
 							resetSort()
 							setSortDate(prevValue === 0 ? 1 : prevValue === 1 ? -1 : 0)
 						}}
 					>
-						<p className="ml-auto">Date</p>
+						<p className="ml-auto">Ngày</p>
 						{sortDate === 0 && <ChevronUpDownIcon className="ml-auto w-6 h-6" />}
 						{sortDate === 1 && <ChevronUpIcon className="ml-auto w-6 h-6" />}
 						{sortDate === -1 && <ChevronDownIcon className="ml-auto w-6 h-6" />}
 					</button>
 					<button
-						className="sticky top-0 flex justify-center bg-gradient-to-br from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
+						className="sticky top-0 flex justify-center bg-red-500 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
 						onClick={() => {
 							let prevValue = sortTime
 							resetSort()
 							setSortTime(prevValue === 0 ? 1 : prevValue === 1 ? -1 : 0)
 						}}
 					>
-						<p className="ml-auto">Time</p>
+						<p className="ml-auto">Thời gian</p>
 						{sortTime === 0 && <ChevronUpDownIcon className="ml-auto w-6 h-6" />}
 						{sortTime === 1 && <ChevronUpIcon className="ml-auto w-6 h-6" />}
 						{sortTime === -1 && <ChevronDownIcon className="ml-auto w-6 h-6" />}
 					</button>
 					<button
-						className="sticky top-0 flex justify-center bg-gradient-to-br from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
+						className="sticky top-0 flex justify-center bg-red-400 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
 						onClick={() => {
 							let prevValue = sortBooked
 							resetSort()
 							setSortBooked(prevValue === 0 ? 1 : prevValue === 1 ? -1 : 0)
 						}}
 					>
-						<p className="ml-auto">Booked</p>
+						<p className="ml-auto">Đã đặt vé</p>
 						{sortBooked === 0 && <ChevronUpDownIcon className="ml-auto w-6 h-6" />}
 						{sortBooked === 1 && <ChevronUpIcon className="ml-auto w-6 h-6" />}
 						{sortBooked === -1 && <ChevronDownIcon className="ml-auto w-6 h-6" />}
 					</button>
 					<button
-						className="sticky top-0 flex justify-center bg-gradient-to-br from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
+						className="sticky top-0 flex justify-center bg-red-500 hover:from-gray-700 hover:to-gray-600 px-2 py-1 text-center text-xl font-semibold text-white"
 						onClick={() => {
 							let prevValue = sortRelease
 							resetSort()
 							setSortRelease(prevValue === 0 ? 1 : prevValue === 1 ? -1 : 0)
 						}}
 					>
-						<p className="ml-auto">Release</p>
+						<p className="ml-auto">Phát hành</p>
 						{sortRelease === 0 && <ChevronUpDownIcon className="ml-auto w-6 h-6" />}
 						{sortRelease === 1 && <ChevronUpIcon className="ml-auto w-6 h-6" />}
 						{sortRelease === -1 && <ChevronDownIcon className="ml-auto w-6 h-6" />}
 					</button>
-					<p className="sticky top-0 z-[1] flex items-center justify-center gap-2 rounded-tr-md bg-gradient-to-br from-gray-800 to-gray-700 px-2 py-1 text-center text-xl font-semibold text-white">
+					<p className="sticky top-0 z-[1] flex items-center justify-center gap-2 rounded-tr-md bg-red-400 px-2 py-1 text-center text-xl font-semibold text-white">
 						<MapIcon className="h-6 w-6" />
-						View
+						Xem
 					</p>
 					{isFetchingShowtimesDone &&
 						filteredShowtimes.map((showtime, index) => {
@@ -903,11 +902,11 @@ const Search = () => {
 										)}
 									</div>
 									<button
-										className="flex items-center justify-center gap-2 bg-gradient-to-br from-indigo-600 to-blue-500 px-2 py-1 text-white drop-shadow-md hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
+										className="flex items-center justify-center gap-2 bg-red-300 px-2 py-1 text-white drop-shadow-md hover:bg-red-600 disabled:from-slate-500 disabled:to-slate-400"
 										onClick={() => navigate(`/showtime/${showtime._id}`)}
 									>
 										<MapIcon className="h-6 w-6" />
-										View
+										Chi tiết
 									</button>
 								</Fragment>
 							)
