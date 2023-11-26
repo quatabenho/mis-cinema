@@ -5,6 +5,12 @@ const router = express.Router()
 
 const { protect, authorize } = require('../middleware/auth')
 
+router.use((req, res, next) => {
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+  });
+
+  
 router.post('/register', register)
 router.post('/login', login)
 router.get('/logout', logout)
