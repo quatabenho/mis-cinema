@@ -28,7 +28,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
-app.use(cors({ origin: 'https://mis-cinema.vercel.app', credentials: true }))
+app.use(cors({ origin: 'https://mis-cinema-backend.vercel.app', credentials: true }))
 // app.use(cors({ origin: true, credentials: true }))
 
 app.use(mongoSanitize())
