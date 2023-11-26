@@ -102,16 +102,16 @@ const TheaterListsByMovie = ({ movies, selectedMovieIndex, setSelectedMovieIndex
 	return (
 		<>
 			<CinemaLists {...props} />
-			<div className="mx-4 h-fit rounded-md bg-gradient-to-br from-indigo-200 to-blue-100 text-gray-900 drop-shadow-md sm:mx-8">
+			<div className="mx-4 h-fit rounded-md bg-orange-100 text-gray-900 drop-shadow-md sm:mx-8">
 				<div className="flex flex-col gap-6 p-4 sm:p-6">
 					<DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
 					<div className="flex flex-col gap-4 rounded-md bg-gradient-to-br from-indigo-100 to-white py-4">
 						<div className="flex items-center">
-							<img src={movies[selectedMovieIndex].img} className="w-32 px-4 drop-shadow-md" />
+							<img src={movies[selectedMovieIndex].img} className="w-64 px-4 drop-shadow-md" />
 							<div>
 								<h4 className="text-2xl font-semibold">{movies[selectedMovieIndex].name}</h4>
 								<p className="text-md font-medium">
-									length : {movies[selectedMovieIndex].length || '-'} min
+									Thời lượng : {movies[selectedMovieIndex].length || '-'} phút
 								</p>
 							</div>
 						</div>
@@ -131,7 +131,7 @@ const TheaterListsByMovie = ({ movies, selectedMovieIndex, setSelectedMovieIndex
 									>
 										{filteredTheaters[index - 1]?.cinema.name !==
 											filteredTheaters[index].cinema.name && (
-											<div className="rounded-t-md bg-gradient-to-br from-indigo-800 to-blue-700 px-2 py-1.5 text-center text-2xl font-semibold text-white sm:py-2">
+											<div className="rounded-t-md bg-rose-400 px-2 py-1.5 text-center text-2xl font-semibold text-white sm:py-2">
 												<h2>{theater.cinema.name}</h2>
 											</div>
 										)}
@@ -151,7 +151,7 @@ const TheaterListsByMovie = ({ movies, selectedMovieIndex, setSelectedMovieIndex
 							})}
 							{filteredTheaters.length === 0 && (
 								<p className="text-center text-xl font-semibold text-gray-700">
-									There are no showtimes available
+									Không có rạp phù hợp
 								</p>
 							)}
 						</div>

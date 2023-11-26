@@ -163,13 +163,13 @@ const Schedule = () => {
 	}
 
 	return (
-		<div className="flex min-h-screen flex-col gap-4 bg-gradient-to-br from-indigo-900 to-blue-500 pb-8 text-gray-900 sm:gap-8">
+		<div className="flex min-h-screen flex-col gap-4 bg-white to-blue-500 pb-8 text-gray-900 sm:gap-8">
 			<Navbar />
 			<CinemaLists {...props} />
 			{selectedCinemaIndex !== null &&
 				(cinemas[selectedCinemaIndex]?.theaters?.length ? (
-					<div className="mx-4 flex flex-col gap-2 rounded-lg bg-gradient-to-br from-indigo-200 to-blue-100 p-4 drop-shadow-xl sm:mx-8 sm:gap-4 sm:p-6">
-						<h2 className="text-3xl font-bold text-gray-900">Schedule</h2>
+					<div className="mx-4 flex flex-col gap-2 rounded-lg bg-rose-200 p-4 drop-shadow-xl sm:mx-8 sm:gap-4 sm:p-6">
+						<h2 className="text-3xl font-bold text-gray-900">Lịch chiếu phim</h2>
 						<DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
 						{auth.role === 'admin' && (
 							<form
@@ -180,7 +180,7 @@ const Schedule = () => {
 									<div className="flex flex-col gap-2 rounded-lg lg:flex-row lg:items-stretch">
 										<div className="flex grow items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
 											<label className="whitespace-nowrap text-lg font-semibold leading-5">
-												Theater:
+												Phòng chiếu phim:
 											</label>
 											<select
 												className="h-9 w-full rounded bg-white px-2 py-1 font-semibold text-gray-900 drop-shadow-sm"
@@ -188,7 +188,7 @@ const Schedule = () => {
 												{...register('theater', { required: true })}
 											>
 												<option value="" defaultValue>
-													Choose a theater
+													Chọn phòng chiếu phim
 												</option>
 												{cinemas[selectedCinemaIndex].theaters?.map((theater, index) => {
 													return (
@@ -199,9 +199,9 @@ const Schedule = () => {
 												})}
 											</select>
 										</div>
-										<div className="flex grow-[2] items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
+										<div className="flex grow-[2] items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start pl-5">
 											<label className="whitespace-nowrap text-lg font-semibold leading-5">
-												Movie:
+												Phim
 											</label>
 											<Select
 												value={selectedMovie}
@@ -223,7 +223,7 @@ const Schedule = () => {
 										</div>
 										<div className="flex items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
 											<label className="whitespace-nowrap text-lg font-semibold leading-5">
-												Showtime:
+												Thời gian
 											</label>
 											<input
 												type="time"
@@ -236,7 +236,7 @@ const Schedule = () => {
 									<div className="flex flex-col gap-2 rounded-lg lg:flex-row lg:items-stretch">
 										<div className="flex items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
 											<label className="whitespace-nowrap text-lg font-semibold leading-5">
-												Repeat (Day):
+												Lặp lại (Ngày)
 											</label>
 											<input
 												type="number"
@@ -249,7 +249,7 @@ const Schedule = () => {
 											/>
 										</div>
 										<label className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap text-lg font-semibold leading-5 lg:flex-col lg:items-start">
-											Release now:
+											Phát hành
 											<input
 												type="checkbox"
 												className="h-6 w-6 lg:h-9 lg:w-9"
@@ -257,12 +257,11 @@ const Schedule = () => {
 											/>
 										</label>
 										<div className="flex flex-col items-start gap-2 lg:flex-row lg:items-end">
-											<p className="font-semibold text-right underline">Auto increase</p>
 											<label
 												className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
 												title="After add, update showtime value to the movie ending time"
 											>
-												Showtime:
+												Thời gian
 												<input
 													type="checkbox"
 													className="h-6 w-6 lg:h-9 lg:w-9"
@@ -273,7 +272,7 @@ const Schedule = () => {
 												className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
 												title="After add, update date value to the movie ending time"
 											>
-												Date:
+												Ngày:
 												<input
 													type="checkbox"
 													className="h-6 w-6 lg:h-9 lg:w-9"
@@ -286,7 +285,7 @@ const Schedule = () => {
 											className="flex items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start"
 											title="Gap between showtimes"
 										>
-											<label className="whitespace-nowrap font-semibold leading-5">Gap:</label>
+											<label className="whitespace-nowrap font-semibold leading-5">Lặp lại</label>
 											<input
 												type="time"
 												className="h-9 w-full rounded bg-white px-2 py-1 font-semibold text-gray-900 drop-shadow-sm disabled:bg-gray-300"
@@ -300,7 +299,7 @@ const Schedule = () => {
 												className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
 												title="Rounding up to the nearest five minutes"
 											>
-												5-min:
+												5-min
 												<input
 													type="checkbox"
 													className="h-6 w-6 lg:h-9 lg:w-9"
@@ -314,7 +313,7 @@ const Schedule = () => {
 												className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
 												title="Rounding up to the nearest ten minutes"
 											>
-												10-min:
+												10-min
 												<input
 													type="checkbox"
 													className="h-6 w-6 lg:h-9 lg:w-9"
@@ -333,7 +332,7 @@ const Schedule = () => {
 									className="whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-blue-500 px-2 py-1 font-medium text-white drop-shadow-md hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
 									type="submit"
 								>
-									ADD +
+									Thêm lịch 
 								</button>
 							</form>
 						)}
@@ -341,7 +340,7 @@ const Schedule = () => {
 							<Loading />
 						) : (
 							<div>
-								<h2 className="text-2xl font-bold">Theaters</h2>
+								<h2 className="text-2xl font-bold">Phòng chiếu phim</h2>
 								{cinemas[selectedCinemaIndex]?._id && (
 									<ScheduleTable
 										cinema={cinemas[selectedCinemaIndex]}
@@ -353,8 +352,8 @@ const Schedule = () => {
 						)}
 					</div>
 				) : (
-					<div className="mx-4 flex flex-col gap-2 rounded-lg bg-gradient-to-br from-indigo-200 to-blue-100 p-4 drop-shadow-xl sm:mx-8 sm:gap-4 sm:p-6">
-						<p className="text-center">There are no theaters available</p>
+					<div className="mx-4 flex flex-col gap-2 rounded-lg bg-rose-200 p-4 drop-shadow-xl sm:mx-8 sm:gap-4 sm:p-6">
+						<p className="text-center">Không có phòng nào phù hợp</p>
 					</div>
 				))}
 		</div>

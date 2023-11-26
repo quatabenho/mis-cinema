@@ -51,14 +51,14 @@ const Movie = () => {
 			})
 			// console.log(response.data)
 			fetchMovies()
-			toast.success('Add movie successful!', {
+			toast.success('Thêm phim thành công!', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error('Error', {
+			toast.error('Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -70,7 +70,7 @@ const Movie = () => {
 
 	const handleDelete = (movie) => {
 		const confirmed = window.confirm(
-			`Do you want to delete movie ${movie.name}, including its showtimes and tickets?`
+			`Bạn có muốn xóa ${movie.name}, bao gồm cả lịch chiếu và vé?`
 		)
 		if (confirmed) {
 			onDeleteMovie(movie._id)
@@ -86,14 +86,14 @@ const Movie = () => {
 			})
 			// console.log(response.data)
 			fetchMovies()
-			toast.success('Delete movie successful!', {
+			toast.success('Xóa phim thành công', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error('Error', {
+			toast.error('Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -108,18 +108,18 @@ const Movie = () => {
 	const min = sumMin % 60
 
 	return (
-		<div className="flex min-h-screen flex-col gap-4 bg-gradient-to-br from-indigo-900 to-blue-500 pb-8 text-gray-900 sm:gap-8">
+		<div className="flex min-h-screen flex-col gap-4 pb-8 text-gray-900 sm:gap-8">
 			<Navbar />
-			<div className="mx-4 flex h-fit flex-col gap-4 rounded-md bg-gradient-to-br from-indigo-200 to-blue-100 p-4 drop-shadow-xl sm:mx-8 sm:p-6">
-				<h2 className="text-3xl font-bold text-gray-900">Movie Lists</h2>
+			<div className="mx-4 flex h-fit flex-col gap-4 rounded-md p-4 drop-shadow-xl sm:mx-8 sm:p-6">
+				<h2 className="text-3xl font-bold text-gray-900">Danh sách phim</h2>
 				<form
 					onSubmit={handleSubmit(onAddMovie)}
-					className="flex flex-col items-stretch justify-end gap-x-4 gap-y-2 rounded-md bg-gradient-to-br from-indigo-100 to-white p-4 drop-shadow-md lg:flex-row"
+					className="flex flex-col items-stretch justify-end gap-x-4 gap-y-2 rounded-md bg-orange-100 p-4 drop-shadow-md lg:flex-row"
 				>
 					<div className="flex w-full grow flex-col flex-wrap justify-start gap-4 lg:w-auto">
-						<h3 className="text-xl font-bold">Add Movie</h3>
+						<h3 className="text-xl font-bold">Thêm phim mới</h3>
 						<div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center">
-							<label className="text-lg font-semibold leading-5">Name :</label>
+							<label className="text-lg font-semibold leading-5">Tên phim :</label>
 							<input
 								type="text"
 								required
@@ -141,7 +141,7 @@ const Movie = () => {
 							/>
 						</div>
 						<div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center">
-							<label className="text-lg font-semibold leading-5">Length (hr.):</label>
+							<label className="text-lg font-semibold leading-5">Thời lượng (giờ.):</label>
 							<input
 								type="number"
 								min="0"
@@ -153,7 +153,7 @@ const Movie = () => {
 						</div>
 						<div>
 							<div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center">
-								<label className="text-lg font-semibold leading-5">Length (min.):</label>
+								<label className="text-lg font-semibold leading-5">Thời lượng (phút.):</label>
 								<input
 									type="number"
 									min="0"
@@ -174,11 +174,11 @@ const Movie = () => {
 							<img src={watch('img')} className="h-48 rounded-md object-contain drop-shadow-md lg:h-64" />
 						)}
 						<button
-							className="w-full min-w-fit items-center rounded-md bg-gradient-to-br from-indigo-600 to-blue-500 px-2 py-1 text-center font-medium text-white drop-shadow-md hover:from-indigo-500 hover:to-blue-500 disabled:from-slate-500 disabled:to-slate-400 lg:w-24 xl:w-32 xl:text-xl"
+							className="w-full min-w-fit items-center rounded-md bg-orange-300 px-2 py-1 text-center font-medium text-white drop-shadow-md hover:bg-orange-400 disabled:from-slate-500 disabled:to-slate-400 lg:w-24 xl:w-32 xl:text-xl"
 							type="submit"
 							disabled={isAddingMovie}
 						>
-							{isAddingMovie ? 'Processing...' : 'ADD +'}
+							{isAddingMovie ? 'Processing...' : 'THÊM'}
 						</button>
 					</div>
 				</form>
@@ -189,7 +189,7 @@ const Movie = () => {
 					<input
 						type="search"
 						className="block w-full rounded-lg border border-gray-300 p-2 pl-10 text-gray-900"
-						placeholder="Search movie"
+						placeholder="Tìm kiếm"
 						{...register('search')}
 					/>
 				</div>

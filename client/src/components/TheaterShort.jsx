@@ -57,11 +57,11 @@ const TheaterShort = ({ theaterId, movies, selectedDate, filterMovie, rounded = 
 		>
 			<div className="flex flex-col sm:flex-row">
 				<div
-					className={`flex min-w-[120px] flex-row items-center justify-center gap-x-2 bg-gradient-to-br from-gray-800 to-gray-700 px-4 py-0.5 text-2xl font-bold text-white sm:flex-col ${
+					className={`flex min-w-[120px] flex-row items-center justify-center gap-x-2 bg-rose-500 px-4 py-0.5 text-2xl font-bold text-white sm:flex-col ${
 						rounded && 'sm:rounded-bl-md'
 					}`}
 				>
-					<p className="text-sm">Theater</p>
+					<p className="text-sm">Phòng</p>
 					<p className="text-3xl leading-8">{theater.number}</p>
 				</div>
 				{auth.role === 'admin' && (

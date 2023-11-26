@@ -29,14 +29,14 @@ const Purchase = () => {
 			)
 			// console.log(response.data)
 			navigate('/cinema')
-			toast.success('Purchase seats successful!', {
+			toast.success('Thanh toán thành công!', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error(error.response.data.message || 'Error', {
+			toast.error(error.response.data.message || 'Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -47,27 +47,27 @@ const Purchase = () => {
 	}
 
 	return (
-		<div className="flex min-h-screen flex-col gap-4 bg-gradient-to-br from-indigo-900 to-blue-500 pb-8 sm:gap-8">
+		<div className="flex min-h-screen flex-col gap-4 bg-white pb-8 sm:gap-8">
 			<Navbar />
-			<div className="mx-4 h-fit rounded-lg bg-gradient-to-br from-indigo-200 to-blue-100 p-4 drop-shadow-xl sm:mx-8 sm:p-6">
+			<div className="mx-4 h-fit rounded-lg bg-orange-50 p-4 drop-shadow-xl sm:mx-8 sm:p-6">
 				<ShowtimeDetails showtime={showtime} />
-				<div className="flex flex-col justify-between rounded-b-lg bg-gradient-to-br from-indigo-100 to-white text-center text-lg drop-shadow-lg md:flex-row">
+				<div className="flex flex-col justify-between rounded-b-lg bg-rose-200 text-center text-lg drop-shadow-lg md:flex-row">
 					<div className="flex flex-col items-center gap-x-4 px-4 py-2 md:flex-row">
-						<p className="font-semibold">Selected Seats : </p>
+						<p className="font-semibold">Ghế : </p>
 						<p className="text-start">{selectedSeats.join(', ')}</p>
-						{!!selectedSeats.length && <p className="whitespace-nowrap">({selectedSeats.length} seats)</p>}
+						{!!selectedSeats.length && <p className="whitespace-nowrap">({selectedSeats.length} ghế)</p>}
 					</div>
 					{!!selectedSeats.length && (
 						<button
 							onClick={() => onPurchase()}
-							className="flex items-center justify-center gap-2 rounded-b-lg  bg-gradient-to-br from-indigo-600 to-blue-500 px-4 py-1 font-semibold text-white hover:from-indigo-500 hover:to-blue-500 disabled:from-slate-500 disabled:to-slate-400 md:rounded-none md:rounded-br-lg"
+							className="flex items-center justify-center gap-2 rounded-b-lg  bg-rose-300 px-4 py-1 font-semibold text-white hover:bg-rose-400 disabled:from-slate-500 disabled:to-slate-400 md:rounded-none md:rounded-br-lg"
 							disabled={isPurchasing}
 						>
 							{isPurchasing ? (
-								'Processing...'
+								'Đang xử lý...'
 							) : (
 								<>
-									<p>Confirm Purchase</p>
+									<p>Xác nhận thanh toán</p>
 									<TicketIcon className="h-7 w-7 text-white" />
 								</>
 							)}

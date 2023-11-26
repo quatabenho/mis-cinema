@@ -62,7 +62,7 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 		try {
 			SetIsAddingShowtime(true)
 			if (!data.movie) {
-				toast.error('Please select a movie', {
+				toast.error('Vui lòng chọn phim', {
 					position: 'top-center',
 					autoClose: 2000,
 					pauseOnHover: false
@@ -115,14 +115,14 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 					sessionStorage.setItem('selectedDate', nextShowtime)
 				}
 			}
-			toast.success('Add showtime successful!', {
+			toast.success('Thêm lịch thành công!', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error('Error', {
+			toast.error('Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -149,14 +149,14 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 		<div className="flex flex-col">
 			<div className="flex md:justify-between">
 				<h3
-					className={`flex w-fit items-center rounded-tl-2xl bg-gradient-to-br from-gray-800 to-gray-700 px-6 py-0.5 text-2xl font-bold text-white md:rounded-t-2xl md:px-8 ${
+					className={`flex w-fit items-center rounded-tl-2xl bg-rose-500 px-6 py-0.5 text-2xl font-bold text-white md:rounded-t-2xl md:px-8 ${
 						auth.role !== 'admin' && 'rounded-t-2xl'
 					}`}
 				>
 					{theater.number}
 				</h3>
 				{auth.role === 'admin' && (
-					<div className="flex w-fit flex-col gap-x-3 rounded-tr-2xl bg-gradient-to-br from-indigo-800 to-blue-700 px-4 py-0.5 font-semibold text-white md:flex-row md:gap-x-6 md:rounded-t-2xl md:text-lg md:font-bold">
+					<div className="flex w-fit flex-col gap-x-3 rounded-tr-2xl bg-rose-400 px-4 py-0.5 font-semibold text-white md:flex-row md:gap-x-6 md:rounded-t-2xl md:text-lg md:font-bold">
 						<div className="flex items-center gap-2">
 							<ArrowsUpDownIcon className="h-5 w-5" />
 							{theater?.seatPlan?.row === 'A' ? (
@@ -176,12 +176,12 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 						<div className="flex items-center gap-2">
 							<UserIcon className="h-5 w-5" />
 							{(rowToNumber(theater.seatPlan.row) * theater.seatPlan.column).toLocaleString('en-US')}{' '}
-							Seats
+							Ghế
 						</div>
 					</div>
 				)}
 			</div>
-			<div className="flex flex-col gap-4 rounded-b-md rounded-tr-md bg-gradient-to-br from-indigo-100 to-white py-4 md:rounded-tr-none">
+			<div className="flex flex-col gap-4 rounded-b-md rounded-tr-md bg-rose-100 py-4 md:rounded-tr-none">
 				{auth.role === 'admin' && (
 					<>
 						<form
@@ -192,7 +192,7 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 								<div className="flex flex-col gap-2 rounded-lg lg:flex-row lg:items-stretch">
 									<div className="flex grow-[2] items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
 										<label className="whitespace-nowrap text-lg font-semibold leading-5">
-											Movie:
+											Phim:
 										</label>
 										<Select
 											value={selectedMovie}
@@ -214,7 +214,7 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 									</div>
 									<div className="flex items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
 										<label className="whitespace-nowrap text-lg font-semibold leading-5">
-											Showtime:
+											Thời gian:
 										</label>
 										<input
 											type="time"
@@ -227,7 +227,7 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 								<div className="flex flex-col gap-2 rounded-lg lg:flex-row lg:items-stretch">
 									<div className="flex items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
 										<label className="whitespace-nowrap text-lg font-semibold leading-5">
-											Repeat (Day):
+											Lặp lại (ngày)
 										</label>
 										<input
 											type="number"
@@ -240,7 +240,7 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 										/>
 									</div>
 									<label className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap text-lg font-semibold leading-5 lg:flex-col lg:items-start">
-										Release now:
+										Phát hành bây giờ
 										<input
 											type="checkbox"
 											className="h-6 w-6 lg:h-9 lg:w-9"
@@ -248,12 +248,12 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 										/>
 									</label>
 									<div className="flex flex-col items-start gap-2 lg:flex-row lg:items-end">
-										<p className="font-semibold text-right underline">Auto increase</p>
+										{/* <p className="font-semibold text-right underline">Auto increase</p> */}
 										<label
 											className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
 											title="After add, update showtime value to the movie ending time"
 										>
-											Showtime:
+											Thời gian
 											<input
 												type="checkbox"
 												className="h-6 w-6 lg:h-9 lg:w-9"
@@ -264,7 +264,7 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 											className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
 											title="After add, update date value to the movie ending time"
 										>
-											Date:
+											Ngày
 											<input
 												type="checkbox"
 												className="h-6 w-6 lg:h-9 lg:w-9"
@@ -277,7 +277,7 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 										className="flex items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start"
 										title="Gap between showtimes"
 									>
-										<label className="whitespace-nowrap font-semibold leading-5">Gap:</label>
+										<label className="whitespace-nowrap font-semibold leading-5">Lặp lại:</label>
 										<input
 											type="time"
 											className="h-9 w-full rounded bg-white px-2 py-1 font-semibold text-gray-900 drop-shadow-sm disabled:bg-gray-300"
@@ -321,10 +321,10 @@ const Theater = ({ theaterId, movies, selectedDate, filterMovie, setSelectedDate
 							<button
 								title="Add showtime"
 								disabled={isAddingShowtime}
-								className="whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-blue-500 px-2 py-1 font-medium text-white drop-shadow-md hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
+								className="whitespace-nowrap rounded-md bg-rose-400 hover:bg-rose-500 px-2 py-1 font-medium text-white drop-shadow-md disabled:from-slate-500 disabled:to-slate-400"
 								type="submit"
 							>
-								ADD +
+								Thêm
 							</button>
 						</form>
 						{filterMovie?.name && (

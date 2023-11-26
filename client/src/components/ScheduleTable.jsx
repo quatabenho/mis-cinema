@@ -81,7 +81,7 @@ const ScheduleTable = ({ cinema, selectedDate }) => {
 			<div
 				className={`grid min-h-[50vh] max-h-screen overflow-x-auto grid-cols-${cinema.theaters?.length.toString()} grid-rows-${
 					gridRows + shiftEnd
-				} rounded-md bg-gradient-to-br from-indigo-100 to-white`}
+				} rounded-md bg-white`}
 				{...events}
 				ref={ref}
 			>
@@ -157,14 +157,14 @@ const ScheduleTable = ({ cinema, selectedDate }) => {
 
 				{showtimeCount === 0 && (
 					<div className="col-span-full row-start-3 flex items-center justify-center text-xl font-semibold text-gray-700">
-						There are no showtimes available
+						Chưa có lịch
 					</div>
 				)}
 
 				{cinema.theaters.map((theater, index) => (
 					<div
 						key={index}
-						className="sticky top-0 row-span-1 row-start-1 flex flex-col items-center justify-center bg-gradient-to-br from-gray-800 to-gray-700 py-1 text-white"
+						className="sticky top-0 row-span-1 row-start-1 flex flex-col items-center justify-center bg-rose-400 py-1 text-white"
 					>
 						<p className="text-2xl font-semibold leading-7">{index + 1}</p>
 						{auth.role === 'admin' && (
@@ -188,7 +188,7 @@ const ScheduleTable = ({ cinema, selectedDate }) => {
 									{(rowToNumber(theater.seatPlan.row) * theater.seatPlan.column).toLocaleString(
 										'en-US'
 									)}{' '}
-									Seats
+									Ghế
 								</p>
 							</>
 						)}

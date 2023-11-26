@@ -14,7 +14,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 	const [isUnreleasingShowtime, setIsUnreleasingShowtime] = useState(false)
 
 	const handleDelete = () => {
-		const confirmed = window.confirm(`Do you want to delete this showtime, including its tickets?`)
+		const confirmed = window.confirm(`Bạn có muốn xóa lịch này, bao gồm cả vé?`)
 		if (confirmed) {
 			onDeleteShowtime()
 		}
@@ -30,14 +30,14 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 			})
 			// console.log(response.data)
 			navigate('/cinema')
-			toast.success('Delete showtime successful!', {
+			toast.success('Xóa thành công!', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error('Error', {
+			toast.error('Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -48,7 +48,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 	}
 
 	const handleReleaseShowtime = () => {
-		const confirmed = window.confirm(`Do you want to release this showtime?`)
+		const confirmed = window.confirm(`Bạn có muốn phát hành lịch này?`)
 		if (confirmed) {
 			onReleaseShowtime()
 		}
@@ -67,14 +67,14 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 				}
 			)
 			await fetchShowtime()
-			toast.success(`Release showtime successful!`, {
+			toast.success(`Phát hành thành công!`, {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error('Error', {
+			toast.error('Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -85,7 +85,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 	}
 
 	const handleUnreleasedShowtime = () => {
-		const confirmed = window.confirm(`Do you want to unreleased this showtime?`)
+		const confirmed = window.confirm(`Bạn có muốn hủy lịch này?`)
 		if (confirmed) {
 			onUnreleasedShowtime()
 		}
@@ -104,14 +104,14 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 				}
 			)
 			await fetchShowtime()
-			toast.success(`Unreleased showtime successful!`, {
+			toast.success(`Hủy thành công!`, {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error('Error', {
+			toast.error('Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -128,7 +128,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 					{!showtime.isRelease && (
 						<button
 							title="Edit cinema name"
-							className="flex w-fit items-center gap-1 rounded-md bg-gradient-to-r from-indigo-600 to-blue-500  py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
+							className="flex w-fit items-center gap-1 rounded-md bg-indigo-500 py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:bg-indigo-500 disabled:from-slate-500 disabled:to-slate-400"
 							onClick={() => handleReleaseShowtime(true)}
 							disabled={isReleasingShowtime}
 						>
@@ -136,7 +136,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 								'Processing...'
 							) : (
 								<>
-									RELEASE
+									Phát hành
 									<EyeIcon className="h-5 w-5" />
 								</>
 							)}
@@ -145,7 +145,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 					{showtime.isRelease && (
 						<button
 							title="Edit cinema name"
-							className="flex w-fit items-center gap-1 rounded-md bg-gradient-to-r from-indigo-600 to-blue-500  py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
+							className="flex w-fit items-center gap-1 rounded-md bg-indigo-400 py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:bg-indigo-500 disabled:from-slate-500 disabled:to-slate-400"
 							onClick={() => handleUnreleasedShowtime(true)}
 							disabled={isUnreleasingShowtime}
 						>
@@ -153,14 +153,14 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 								'Processing...'
 							) : (
 								<>
-									UNRELEASE
+									Hủy
 									<EyeSlashIcon className="h-5 w-5" />
 								</>
 							)}
 						</button>
 					)}
 					<button
-						className="flex w-fit items-center gap-1 rounded-md bg-gradient-to-r from-red-700 to-rose-600 py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:from-red-600 hover:to-rose-600 disabled:from-slate-500 disabled:to-slate-400"
+						className="flex w-fit items-center gap-1 rounded-md bg-rose-400 py-1 pl-2 pr-1.5 text-sm font-medium text-white hover:from-red-600 hover:bg-rose-500 disabled:to-slate-400"
 						onClick={() => handleDelete()}
 						disabled={isDeletingShowtimes}
 					>
@@ -168,7 +168,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 							'Processing...'
 						) : (
 							<>
-								DELETE
+								Xóa
 								<TrashIcon className="h-5 w-5" />
 							</>
 						)}
@@ -176,11 +176,11 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 				</div>
 			)}
 			<div className="flex justify-between">
-				<div className="flex flex-col justify-center rounded-tl-lg bg-gradient-to-br from-gray-800 to-gray-700 px-4 py-0.5 text-center font-bold text-white sm:px-8">
-					<p className="text-sm">Theater</p>
+				<div className="flex flex-col justify-center rounded-tl-lg bg-rose-500 px-4 py-0.5 text-center font-bold text-white sm:px-8">
+					<p className="text-sm">Phòng</p>
 					<p className="text-3xl">{showtime?.theater?.number}</p>
 				</div>
-				<div className="flex w-fit grow items-center justify-center rounded-tr-lg bg-gradient-to-br from-indigo-800 to-blue-700 px-4 py-0.5 text-center text-xl font-bold text-white sm:text-3xl">
+				<div className="flex w-fit grow items-center justify-center rounded-tr-lg bg-rose-400 px-4 py-0.5 text-center text-xl font-bold text-white sm:text-3xl">
 					<p className="mx-auto">{showtime?.theater?.cinema.name}</p>
 					{!showtime?.isRelease && <EyeSlashIcon className="h-8 w-8" title="Unreleased showtime" />}
 				</div>
@@ -195,7 +195,7 @@ const ShowtimeDetails = ({ showDeleteBtn, showtime, fetchShowtime }) => {
 							</h4>
 							{showtime?.movie && (
 								<p className="mr-4 font-medium sm:text-lg">
-									length : {showtime?.movie?.length || '-'} min
+									Thời lượng : {showtime?.movie?.length || '-'} min
 								</p>
 							)}
 						</div>

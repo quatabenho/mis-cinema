@@ -34,14 +34,14 @@ const CinemaLists = ({
 			// console.log(response.data)
 			reset()
 			fetchCinemas(data.name)
-			toast.success('Add cinema successful!', {
+			toast.success('Thêm cụm rạp thành công!', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
 		} catch (error) {
 			console.error(error)
-			toast.error('Error', {
+			toast.error('Lỗi', {
 				position: 'top-center',
 				autoClose: 2000,
 				pauseOnHover: false
@@ -60,7 +60,7 @@ const CinemaLists = ({
 			cinemasList.map((cinema, index) => {
 				return cinemas[selectedCinemaIndex]?._id === cinema._id ? (
 					<button
-						className="w-fit rounded-md bg-gradient-to-br from-indigo-800 to-blue-700 px-2.5 py-1.5 text-lg font-medium text-white drop-shadow-xl hover:from-indigo-700 hover:to-blue-600"
+						className="w-fit rounded-md bg-rose-500 px-2.5 py-1.5 text-lg font-medium text-white drop-shadow-xl hover:from-indigo-700 hover:to-blue-600"
 						onClick={() => {
 							setSelectedCinemaIndex(null)
 							sessionStorage.setItem('selectedCinemaIndex', null)
@@ -71,7 +71,7 @@ const CinemaLists = ({
 					</button>
 				) : (
 					<button
-						className="w-fit rounded-md bg-gradient-to-br from-indigo-800 to-blue-700 px-2 py-1 font-medium text-white drop-shadow-md hover:from-indigo-700 hover:to-blue-600"
+						className="w-fit rounded-md bg-rose-300 px-2 py-1 font-medium text-white drop-shadow-md hover:from-indigo-700 hover:to-blue-600"
 						onClick={() => {
 							setSelectedCinemaIndex(index)
 							sessionStorage.setItem('selectedCinemaIndex', index)
@@ -83,31 +83,31 @@ const CinemaLists = ({
 				)
 			})
 		) : (
-			<div>No cinemas found</div>
+			<div>Không tìm thấy</div>
 		)
 	}
 
 	return (
 		<>
-			<div className="mx-4 flex h-fit flex-col gap-4 rounded-md bg-gradient-to-br from-indigo-200 to-blue-100 p-4 text-gray-900 drop-shadow-xl sm:mx-8 sm:p-6">
+			<div className="mx-4 flex h-fit flex-col gap-4 rounded-md bg-orange-50 p-4 text-gray-900 drop-shadow-xl sm:mx-8 sm:p-6">
 				<form
 					className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2"
 					onSubmit={handleSubmit(onAddCinema)}
 				>
-					<h2 className="text-3xl font-bold">Cinema Lists</h2>
+					<h2 className="text-3xl font-bold">Danh sách cụm rạp</h2>
 					{auth.role === 'admin' && (
 						<div className="flex w-fit grow sm:justify-end">
 							<input
-								placeholder="Type a cinema name"
+								placeholder="Nhập tên cụm rạp"
 								className="w-full grow rounded-l border border-gray-300 px-3 py-1 sm:max-w-xs"
 								required
 								{...register('name', { required: true })}
 							/>
 							<button
 								disabled={isAdding}
-								className="flex items-center whitespace-nowrap rounded-r-md bg-gradient-to-r from-indigo-600 to-blue-500 px-2 py-1 font-medium text-white hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
+								className="flex items-center whitespace-nowrap rounded-r-md bg-orange-400 px-2 py-1 font-medium text-white hover:bg-orange-500 disabled:from-slate-500 disabled:to-slate-400"
 							>
-								{isAdding ? 'Processing...' : 'ADD +'}
+								{isAdding ? 'Đang xử lý...' : 'Thêm mới'}
 							</button>
 						</div>
 					)}
@@ -119,7 +119,7 @@ const CinemaLists = ({
 					<input
 						type="search"
 						className="block w-full rounded-lg border border-gray-300 p-2 pl-10 text-gray-900"
-						placeholder="Search cinema"
+						placeholder="Tìm cụm rạp"
 						{...register('search')}
 					/>
 				</div>
