@@ -2,12 +2,54 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Cinema Booking</title>
+		<title>MIS Cinemas Vietnam | Hệ thống rạp chiếu phim hiện đại</title>
+		<meta content="" name="description" content="MIS Cinemas Vietnam | Hệ thống rạp chiếu phim hiện đại">
+		<meta name="author" content="Trương Phúc Nguyên">
+		<link rel="shortcut icon" href="https://img.icons8.com/external-topaz-kerismaker/48/external-Galaxy-space-topaz-kerismaker.png" type="image/x-icon">
+		<!-- <link rel="shortcut icon" href="https://img.icons8.com/external-smashingstocks-circular-smashing-stocks/65/external-galaxy-education-smashingstocks-circular-smashing-stocks.png" type="image/x-icon"> -->
+
 	</head>
 	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/main.jsx"></script>
+		<div id="root">
+			
+		</div>
+
+		<footer>
+			<!-- Messenger Plugin chat Code -->
+				<div id="fb-root"></div>
+
+				<!-- Your Plugin chat code -->
+				<div id="fb-customer-chat" class="fb-customerchat">
+				</div>
+
+				<script>
+				var chatbox = document.getElementById('fb-customer-chat');
+				chatbox.setAttribute("page_id", "193065383880152");
+				chatbox.setAttribute("attribution", "biz_inbox");
+				</script>
+
+				<!-- Your SDK code -->
+				<script>
+				window.fbAsyncInit = function() {
+					FB.init({
+					xfbml            : true,
+					version          : 'v18.0'
+					});
+				};
+
+				(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+				</script>		<script type="module" src="/src/main.jsx"></script>
+						</footer>
+
 	</body>
+
 </html>
