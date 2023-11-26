@@ -37,14 +37,14 @@ const Tickets = () => {
 	}, [])
 
 	return (
-		<div className="flex min-h-screen flex-col gap-4 bg-gradient-to-br from-indigo-900 to-blue-500 pb-8 text-gray-900 sm:gap-8">
+		<div className="flex min-h-screen flex-col gap-4  pb-8 text-gray-900 sm:gap-8">
 			<Navbar />
-			<div className="mx-4 flex h-fit flex-col gap-4 rounded-md bg-gradient-to-br from-indigo-200 to-blue-100 p-4 drop-shadow-xl sm:mx-8 sm:p-6">
-				<h2 className="text-3xl font-bold text-gray-900">My Tickets</h2>
+			<div className="mx-4 flex h-fit flex-col gap-4 rounded-md bg-orange-50 p-4 drop-shadow-xl sm:mx-8 sm:p-6">
+				<h2 className="text-3xl font-bold text-gray-900 pb-5">Quản lý vé</h2>
 				{isFetchingticketsDone ? (
 					<>
 						{tickets.length === 0 ? (
-							<p className="text-center">You have not purchased any tickets yet</p>
+							<p className="text-center">Bạn chưa đặt vé nào</p>
 						) : (
 							<div className="grid grid-cols-1 gap-4 xl:grid-cols-2 min-[1920px]:grid-cols-3">
 								{tickets.map((ticket, index) => {
@@ -53,7 +53,7 @@ const Tickets = () => {
 											<ShowtimeDetails showtime={ticket.showtime} />
 											<div className="flex h-full flex-col justify-between rounded-b-lg bg-gradient-to-br from-indigo-100 to-white text-center text-lg drop-shadow-lg md:flex-row">
 												<div className="flex h-full flex-col items-center gap-x-4 px-4 py-2 md:flex-row">
-													<p className="whitespace-nowrap font-semibold">Seats : </p>
+													<p className="whitespace-nowrap font-semibold">Ghế : </p>
 													<p className="text-left">
 														{ticket.seats.map((seat) => seat.row + seat.number).join(', ')}
 													</p>
