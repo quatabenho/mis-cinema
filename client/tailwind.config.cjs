@@ -49,7 +49,9 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['IBM Plex Sans Thai', ...defaultTheme.fontFamily.sans]
+				// sans: ['IBM Plex Sans Thai', ...defaultTheme.fontFamily.sans]
+				sans: ['Quicksand', ...defaultTheme.fontFamily.sans]
+
 			},
 			gridTemplateRows: {
 				...generateGridRow(400)
