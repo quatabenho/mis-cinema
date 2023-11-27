@@ -30,7 +30,7 @@ function App() {
 				<Route path="/cinema" element={<Cinema />} />
 				<Route
 					path="/movie"
-					element={
+					element={		 
 						<AdminRoute>
 							<Movie />
 						</AdminRoute>

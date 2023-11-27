@@ -57,20 +57,20 @@ const Purchase = () => {
 						<p className="text-start">{selectedSeats.join(', ')}</p>
 						{!!selectedSeats.length && <p className="whitespace-nowrap">({selectedSeats.length} ghế)</p>}
 					</div>
+					<div>
+					<div class="mb-3 pt-5">
+							<label for="" class="form-label pr-5 text-black" ><strong>Phương thức thanh toán</strong></label>
+							<select class="form-select form-select-lg rounded" name="" id="">
+								<option selected>Momo</option>
+								<option value="">Cash</option>
+								<option value="">VNPay</option>
+								<option value="">ATM</option>
+								<option value="">Paypal</option>
+								<option value="">Mastercard</option>
 
-					<div class="mb-3 rounded">
-						<label for="" class="form-label text-black"><strong>Phương thức thanh toán</strong></label>
-						<select class="form-select form-select-lg" name="" id="">
-							<option selected>Momo</option>
-							<option value="">VNPay</option>
-							<option value="">Vietcombank</option>
-							<option value="">MB Bank</option>
-							<option value="">Paypal</option>
-							<option value="">Mastercard</option>
-							<option value="">Cash</option>
-						</select>
+							</select>
+						</div>
 					</div>
-
 					{!!selectedSeats.length && (
 						<button
 							onClick={() => onPurchase()}
@@ -88,6 +88,7 @@ const Purchase = () => {
 						</button>
 					)}
 				</div>
+			
 			</div>
 		</div>
 	)
