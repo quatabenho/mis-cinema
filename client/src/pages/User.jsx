@@ -159,8 +159,8 @@ const User = () => {
 											className={`flex items-center justify-center gap-1 rounded bg-violet-300 py-1 pl-2 pr-1.5 text-sm font-medium text-whilte  disabled:from-slate-500 disabled:to-slate-400
 										${
 											ticketsUser === user.username
-												? 'bg-violet-600 hover:bg-violet-400'
-												: 'bg-violet-600 hover:bg-violet-400'
+												? 'bg-violet-400 hover:bg-violet-500'
+												: 'bg-violet-400 hover:bg-violet-500'
 										}`}
 											onClick={() => {
 												setTickets(user.tickets)
