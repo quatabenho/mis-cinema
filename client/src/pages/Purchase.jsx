@@ -57,6 +57,11 @@ const Purchase = () => {
 						<p className="text-start">{selectedSeats.join(', ')}</p>
 						{!!selectedSeats.length && <p className="whitespace-nowrap">({selectedSeats.length} ghế)</p>}
 					</div>
+
+					<div className="flex flex-col items-center gap-x-4 px-4 py-2 md:flex-row">
+						<p className="font-semibold">Tổng tiền : 150,000 VNĐ</p>
+					</div>
+					
 					<div>
 					<div class="mb-3 pt-5">
 							<label for="" class="form-label pr-5 text-black" ><strong>Phương thức thanh toán</strong></label>
