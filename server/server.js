@@ -28,7 +28,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(morgan('dev'))
 // app.use(express.urlencoded({ extended: true }))
-app.use(cors({ origin: 'https://cadilac.click', credentials: true }))
+app.use(cors({ origin: 'https://mis.truongphucnguyen.id.vn', credentials: true }))
 app.use(cors({ origin: true, credentials: true }))
 
 app.use(mongoSanitize())
