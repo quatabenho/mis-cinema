@@ -53,7 +53,7 @@ const Movie = () => {
 			fetchMovies()
 			toast.success('Thêm phim thành công!', {
 				position: 'top-center',
-				autoClose: 2000,
+				autoClose: false,
 				pauseOnHover: false
 			})
 		} catch (error) {
