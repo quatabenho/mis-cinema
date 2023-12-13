@@ -24,7 +24,7 @@ const Login = () => {
 			const response = await axios.post('/auth/login', data)
 			// console.log(response.data)
 			toast.success('Đăng nhập thành công!', {
-				position: 'top-center',
+				position: 'bottom-right',
 				autoClose: 2000,
 				pauseOnHover: false
 			})
